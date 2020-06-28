@@ -1,0 +1,13 @@
+<!-- templates/detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{article.title}}{% endblock %}
+
+{% block content %}
+
+    <h2>{{article.title}}</h2>
+
+    <p>{{article.text}}</p>
+    <em>{{article.date_pub}}</em>
+
+{% endblock content %}

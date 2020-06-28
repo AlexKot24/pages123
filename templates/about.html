@@ -1,6 +1,15 @@
 <!-- templates/about.html -->
 {% extends 'base.html' %}
+{% block title %}Последние статьи{% endblock %}
 
 {% block content %}
-<h1>About page</h1>
+    {% if latest_articles_list %}
+
+        {% for a in latest_articles_list %}
+            <a href="{% url 'detail' a.id %}">{{a.title}}</a> <br>
+        {% endfor %}
+    {% else %}
+        <h1>About page</h1>
+    {% endif %}
+
 {% endblock content %}
