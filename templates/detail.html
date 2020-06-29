@@ -5,9 +5,56 @@
 
 {% block content %}
 
-    <h2>{{article.title}}</h2>
 
-    <p>{{article.text}}</p>
-    <em>{{article.date_pub}}</em>
 
+    <section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{ article.imagegallery_set.first.image.url }}" class="img-thumbnail">
+<!--                        <span><h4>{{article.title}}</h4></span>-->
+                    </div>
+                    <div class="card-desc">
+                        <h3>{{article.title}}</h3>
+                        <p>{{article.text}}</p>
+                        {% if article.imagegallery_set.count > 1 %}
+                            {% for a in article.imagegallery_set.all %}
+                                <div class="card-img">
+                                    <em>{{a.name}}</em> <br>
+                                    <img src="{{ article.imagegallery_set.first.image.url }}" class="img-thumbnail">
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                        <a href="{% url 'about' %}" class="btn-card">Назад</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
 {% endblock content %}
+
+
+    <section class="details-card">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="https://placeimg.com/380/230/nature" alt="">
+                        <span><h4>heading</h4></span>
+                    </div>
+                    <div class="card-desc">
+                        <h3>Heading</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis
+                            voluptas totam</p>
+                            <a href="#" class="btn-card">Read</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>

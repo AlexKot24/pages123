@@ -3,13 +3,31 @@
 {% block title %}Последние статьи{% endblock %}
 
 {% block content %}
-    {% if latest_articles_list %}
 
-        {% for a in latest_articles_list %}
-            <a href="{% url 'detail' a.id %}">{{a.title}}</a> <br>
-        {% endfor %}
-    {% else %}
-        <h1>About page</h1>
-    {% endif %}
+<section class="details-card">
+    <div class="container">
+        <div class="row">
+            {% if latest_articles_list %}
+                {% for article in latest_articles_list %}
+            <div class="col-md-4">
+                <div class="card-content">
+                    <div class="card-img">
+                        <img src="{{ article.imagegallery_set.first.image.url }}" class="rounded" >
+<!--                        <span><h4>{{article.title}}</h4></span>-->
+                    </div>
+                    <div class="card-desc">
+                        <h3>{{article.title}}</h3>
+                        <p>{{article.text}}</p>
+                        <a href="{% url 'detail' article.id %}" class="btn-card">Читать</a>
+                    </div>
 
+                </div>
+            </div>
+            {% endfor %}
+                {% else %}
+                    <h1>About page</h1>
+                {% endif %}
+        </div>
+    </div>
+    </section>
 {% endblock content %}
