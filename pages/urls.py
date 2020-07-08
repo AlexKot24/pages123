@@ -4,12 +4,13 @@ from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 
-from .views import HomePageView, index, detail, home
+from .views import HomePageView, index, detail, home, createarticle
 
 urlpatterns = [
     path('about/', index, name='about'),
     path('', home, name='home'),
     path('about/<int:article_id>/', detail, name='detail'),
+    path('create_article/', createarticle, name='createarticle'),
 ]
 
 if settings.DEBUG:

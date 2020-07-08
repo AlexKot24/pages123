@@ -16,7 +16,7 @@ class NewArticleView(TemplateView):
     template_name = 'AddArticle.html'
 
 def home(request):
-    latest_articles_list = Article.objects.order_by('-date_pub')[0:6]
+    latest_articles_list = Article.objects.order_by('-date_pub')[0:3]
     #   article_photo = latest_articles_list.imagegallery_set.all()[:1];
     return render(request, 'home.html', {'latest_articles_list': latest_articles_list }) # 'article_photo': article_photo
 
@@ -31,3 +31,6 @@ def detail(request, article_id):
         raise Http404("Статья не найдена")
 
     return render(request, 'detail.html', { 'article': a} )
+
+def createarticle (request):
+    return render(request, 'createarticle.html')
